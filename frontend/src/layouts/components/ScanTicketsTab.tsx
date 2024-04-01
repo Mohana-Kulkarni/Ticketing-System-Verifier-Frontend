@@ -6,7 +6,8 @@ import React, { useEffect, useState, useRef, SetStateAction, Dispatch } from 're
 import toast from 'react-hot-toast';
 import { Html5QrcodeScanner } from "html5-qrcode";
 import { GetQrScanResult } from '@/constants/endpoints/VerifierEndpoints';
-import { PiTicket } from "react-icons/pi";
+import { RiUserFollowFill } from "react-icons/ri";
+import { RiUserForbidFill } from "react-icons/ri";
 
 const ScanTicketsTab = () => {
   const [scanResult, setScanResult] = useState<string>('');
@@ -86,17 +87,22 @@ const ScanTicketsTab = () => {
 
   return (
     <div className={"flex flex-col gap-4 w-full items-center"}>
-      <div className={`rounded-lg bg-white dark:bg-darkmode-theme-light p-4 shadow-md h-fit w-auto w-full`}>
+      <div className={`rounded-lg ${status === '' && 'bg-white dark:bg-darkmode-theme-light'}  p-4 shadow-md h-fit w-auto w-full ${status === 'pass' ? 'bg-green-500' : 'bg-red-500'}`}>
         {status !== '' ?
-          <div className={"flex gap-4 items-center"}>
+          <div className={"flex gap-4 items-center justify-center"}>
             <div>
-              <PiTicket size={80}/>
+              {status === 'pass' ?
+                <RiUserFollowFill className={"text-white"} size={60} /> :
+                <RiUserForbidFill className={"text-white"} size={60} />
+              }
             </div>
 
-            <div className={"flex flex-col"}>
+            <div className={"flex flex-col text-white"}>
+              <div className={"flex justify-between"}>
+                <p>Ticket Id: {ticketId}</p>
+                <p>NFT Id: {nftId}</p>
+              </div>
               <p>VC Id: {vcId}</p>
-              <p>Ticket Id: {ticketId}</p>
-              <p>NFT Id: {nftId}</p>
             </div>
 
             <div>

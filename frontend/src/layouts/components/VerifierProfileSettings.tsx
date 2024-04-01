@@ -46,6 +46,7 @@ const VerifierProfileSettings: React.FC<issuerDataI> = ({ id, did, name, email, 
     const [verifierName, setVerifierName] = useState(name);
     const [verifierEmail, setVerifierEmail] = useState(email);
     const [identity, setIdentity] = useState<string | undefined>(govId);
+    const [trustedIssuer, setTrustedIssuer] = useState(trustedIssuers);
 
 
 
@@ -56,7 +57,7 @@ const VerifierProfileSettings: React.FC<issuerDataI> = ({ id, did, name, email, 
 
 
 
-      const PutIssuer = async () => {
+      const PutVerifier = async () => {
         toast.loading('Updating Verifier..')
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
@@ -65,7 +66,7 @@ const VerifierProfileSettings: React.FC<issuerDataI> = ({ id, did, name, email, 
             "name": verifierName,
             "email": verifierEmail,
             "govId": identity,
-            
+            "trustedIssuer": trustedIssuer,
           });
 
         console.log(raw);
@@ -83,7 +84,7 @@ const VerifierProfileSettings: React.FC<issuerDataI> = ({ id, did, name, email, 
           let result = await response.json();
           console.log(result)
           toast.dismiss()
-          toast.success("Issuer Updated!")
+          toast.success("Verifier Updated!")
 
           const verifierData = {
                 id: id ? id.toString() : "",
@@ -120,7 +121,7 @@ const VerifierProfileSettings: React.FC<issuerDataI> = ({ id, did, name, email, 
         else if (identity === "") toast.error("Adhar number cannot be empty!");
         else if (identity && identity.length < 12) toast.error("Adhar number must be of 12 digits")
         else {
-            PutIssuer()
+            PutVerifier()
         }
     };
 

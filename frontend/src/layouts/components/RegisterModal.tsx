@@ -122,10 +122,7 @@ const RegisterModal = () => {
         "email": email,
         "password": password,
         "govId": govId,
-        "privateDid": "",
-        "publicDid": "",
         "walletId": walletAddress,
-        "trustedIssuers": []
       });
 
       console.log(raw);
@@ -170,7 +167,7 @@ const RegisterModal = () => {
     } catch (error) {
       console.error("Error:", error);
       toast.dismiss();
-      toast.error('An error occurred while registering issuer');
+      toast.error('An error occurred while registering verifier');
     }
   }
 

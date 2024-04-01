@@ -10,6 +10,8 @@ import toast from "react-hot-toast";
 import IssuerProfileSettings from "@/components/VerifierProfileSettings";
 import VerifierProfileSettings from "@/components/VerifierProfileSettings";
 import TrustedIssuersCard from "@/components/TrustedIssuersCard";
+import ScanTicketsTab from "@/components/ScanTicketsTab";
+
 
 
 
@@ -17,7 +19,7 @@ const VerifierProfile = () => {
 
     const { verifierData, setVerifierData } = useGlobalContext();
     const router = useRouter();
-    const [tab, setTab] = useState('Pending Requests')
+    const [tab, setTab] = useState('Scan Tickets')
 
     console.log(verifierData);
 
@@ -54,9 +56,9 @@ const VerifierProfile = () => {
 
 
                                             <li>
-                                                <button onClick={() => setTab('Pending Requests')} className={`w-full flex items-center justify-between px-6 py-2 text-gray-900 rounded-lg dark:text-white ${tab === 'Pending Requests' ? 'bg-gray-200 dark:bg-gray-700' : ''} hover:bg-gray-200 dark:hover:bg-gray-700 group`}>
+                                                <button onClick={() => setTab('Scan Tickets')} className={`w-full flex items-center justify-between px-6 py-2 text-gray-900 rounded-lg dark:text-white ${tab === 'Scan Tickets' ? 'bg-gray-200 dark:bg-gray-700' : ''} hover:bg-gray-200 dark:hover:bg-gray-700 group`}>
 
-                                                    <span className="">Pending Requests</span>
+                                                    <span className="">Scan Tickets</span>
                                                     <span className="inline-flex items-center justify-center text-sm font-medium text-gray-800 rounded-full dark:text-gray-300">
                                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
                                                             <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
@@ -66,21 +68,9 @@ const VerifierProfile = () => {
                                             </li>
 
                                             <li>
-                                                <button onClick={() => setTab('Issued Requests')} className={`w-full flex items-center justify-between px-6 py-2 text-gray-900 rounded-lg dark:text-white ${tab === 'Issued Requests' ? 'bg-gray-200 dark:bg-gray-700' : ''} hover:bg-gray-200 dark:hover:bg-gray-700 group`}>
+                                                <button onClick={() => setTab('Trusted Issuers')} className={`w-full flex items-center justify-between px-6 py-2 text-gray-900 rounded-lg dark:text-white ${tab === 'Trusted Issuers' ? 'bg-gray-200 dark:bg-gray-700' : ''} hover:bg-gray-200 dark:hover:bg-gray-700 group`}>
 
-                                                    <span className="">Issued Requests</span>
-                                                    <span className="inline-flex items-center justify-center text-sm font-medium text-gray-800 rounded-full dark:text-gray-300">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                                                        </svg>
-                                                    </span>
-                                                </button>
-                                            </li>
-
-                                            <li>
-                                                <button onClick={() => setTab('Rejected Requests')} className={`w-full flex items-center justify-between px-6 py-2 text-gray-900 rounded-lg dark:text-white ${tab === 'Rejected Requests' ? 'bg-gray-200 dark:bg-gray-700' : ''} hover:bg-gray-200 dark:hover:bg-gray-700 group`}>
-
-                                                    <span className="">Rejected Requests</span>
+                                                    <span className="">Trusted Issuers</span>
                                                     <span className="inline-flex items-center justify-center text-sm font-medium text-gray-800 rounded-full dark:text-gray-300">
                                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
                                                             <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
@@ -135,7 +125,7 @@ const VerifierProfile = () => {
 
 
                                         <li>
-                                            <button onClick={() => setTab('Scan Tickets')} className={`w-full flex items-center justify-between px-6 py-2 text-gray-900 rounded-lg dark:text-white ${tab === 'Pending Requests' ? 'bg-gray-200 dark:bg-gray-700' : ''} hover:bg-gray-200 dark:hover:bg-gray-700 group`}>
+                                            <button onClick={() => setTab('Scan Tickets')} className={`w-full flex items-center justify-between px-6 py-2 text-gray-900 rounded-lg dark:text-white ${tab === 'Scan Tickets' ? 'bg-gray-200 dark:bg-gray-700' : ''} hover:bg-gray-200 dark:hover:bg-gray-700 group`}>
 
                                                 <span className="">Scan Tickets</span>
                                                 <span className="inline-flex items-center justify-center text-sm font-medium text-gray-800 rounded-full dark:text-gray-300">
@@ -147,7 +137,7 @@ const VerifierProfile = () => {
                                         </li>
 
                                         <li>
-                                            <button onClick={() => setTab('Trusted Issuers')} className={`w-full flex items-center justify-between px-6 py-2 text-gray-900 rounded-lg dark:text-white ${tab === 'Issued Requests' ? 'bg-gray-200 dark:bg-gray-700' : ''} hover:bg-gray-200 dark:hover:bg-gray-700 group`}>
+                                            <button onClick={() => setTab('Trusted Issuers')} className={`w-full flex items-center justify-between px-6 py-2 text-gray-900 rounded-lg dark:text-white ${tab === 'Trusted Issuers' ? 'bg-gray-200 dark:bg-gray-700' : ''} hover:bg-gray-200 dark:hover:bg-gray-700 group`}>
 
                                                 <span className="">Trusted Issuers</span>
                                                 <span className="inline-flex items-center justify-center text-sm font-medium text-gray-800 rounded-full dark:text-gray-300">
@@ -187,7 +177,7 @@ const VerifierProfile = () => {
                                 tab === 'Scan Tickets' ? (
 
                                     <div className={'flex items-center h-full flex-col'}>
-                                            
+                                      <ScanTicketsTab />
                                     </div>
 
                                 ) : (

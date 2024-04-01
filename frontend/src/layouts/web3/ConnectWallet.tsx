@@ -22,7 +22,7 @@ export const ConnectWallet = () => {
   const { account, accounts, setAccount, connect, disconnect} = useWallet();
   const installedWallets = useInstalledWallets();
   const uninstalledWallets = useUninstalledWallets();
-  const {connectLoading, setConnectLoading, setIssuerData, setWalletAddress} = useGlobalContext();
+  const {connectLoading, setConnectLoading, setVerifierData, setWalletAddress} = useGlobalContext();
 
   const installedWalletsData: WalletList[] = installedWallets.map(({title, extensionName, installUrl}) => ({
     name: title,
@@ -41,7 +41,7 @@ export const ConnectWallet = () => {
   const allWallets: WalletList[] = installedWalletsData.concat(uninstalledWalletsData)
 
   useEffect(()=>
-    setWalletAddress(account?account.address:'') 
+    setWalletAddress(account?account.address:'')
   ,[account?.address])
 
 
@@ -89,7 +89,7 @@ export const ConnectWallet = () => {
           </ul>
     )
   } else {
-  
+
     const disconnectWallet=()=>{
       disconnect();
       setWalletAddress('');

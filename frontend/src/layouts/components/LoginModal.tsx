@@ -100,7 +100,7 @@ const LoginModal = () => {
       setPassword("");
       const loginModal = document.getElementById("loginModal");
       loginModal!.classList.remove("show");
-      saveData('IssuerId',result.id,3600);
+      saveData('VerifierId',result.id,3600);
     }
     else {
       toast.dismiss()

@@ -72,13 +72,13 @@ const getVerifierById = async() =>{
       }
       setVerifierData(newVerifierData);
       toast.dismiss()
-      toast.success(`Issuer fetched successfully!`)
-    
+      toast.success(`Verifier fetched successfully!`)
+
 
     }
     else {
       toast.dismiss()
-      toast.error('Failed to fetch issuer')
+      toast.error('Failed to fetch Verifier')
       console.log(response)
     }
 
@@ -95,7 +95,7 @@ const getVerifierById = async() =>{
         <div>
           <IssuerProfile />
         </div>: <NotRegistered />
-        } 
+        }
 
     </>
   );

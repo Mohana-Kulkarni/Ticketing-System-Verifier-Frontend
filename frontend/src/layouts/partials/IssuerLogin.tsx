@@ -7,7 +7,7 @@ import { FaSignOutAlt } from "react-icons/fa";
 
 export const IssuerLogin = () => {
 
-  const { issuerData, setIssuerData } = useGlobalContext()
+  const { verifierData, setVerifierData } = useGlobalContext()
 
   const handleLoginClick = (e: any) => {
     e.preventDefault();
@@ -16,7 +16,7 @@ export const IssuerLogin = () => {
   }
 
 
-  
+
   //   const openModal = (modalId: string): void => {
   //     const modal = document.getElementById(modalId);
   //     if (modal) {
@@ -24,7 +24,7 @@ export const IssuerLogin = () => {
   //       document.getElementsByTagName('body')[0].classList.add('overflow-y-hidden');
   //     }
   //   }
-  
+
 
   //   const closeModal = (modalId: string): void => {
   //     const modal = document.getElementById(modalId);
@@ -53,13 +53,13 @@ export const IssuerLogin = () => {
   //   }, []);
 
   // openModal('modelConfirm')
-   
+
 
     const handleLogoutClick = (e: any) => {
       e.preventDefault();
-      localStorage.removeItem("IssuerId");
-      setIssuerData(null);
-      
+      localStorage.removeItem("VerifierId");
+      setVerifierData(null);
+
     }
 
 
@@ -117,7 +117,7 @@ export const IssuerLogin = () => {
         >
 
 
-          {!issuerData ?
+          {!verifierData ?
             <button
               onClick={handleLoginClick}
               className={`btn btn-outline-primary btn-sm lg:inline-flex items-center cursor-pointer px-8`}
@@ -129,7 +129,7 @@ export const IssuerLogin = () => {
               className={`btn btn-outline-primary btn-sm lg:inline-flex items-center cursor-pointer px-8`}
             >
               <span className="flex gap-1 items-center justify-center">
-                {issuerData?.name} <FaSignOutAlt size={"15px"} />
+                {verifierData?.name} <FaSignOutAlt size={"15px"} />
 
               </span>
 

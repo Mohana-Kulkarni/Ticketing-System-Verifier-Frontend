@@ -7,10 +7,8 @@ import { useGlobalContext } from "@/app/context/globalContext";
 
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-import PendingRequestsCard from "@/components/PendingRequestsCard";
-import IssuerProfileSettings from "@/components/IssuerProfileSettings";
-import RejectedRequestsCard from "@/components/RejectedRequestsCard";
-import VerifiableCredentialsCard from "@/components/VerifiableCredentialsCard";
+import IssuerProfileSettings from "@/components/VerifierProfileSettings";
+import VerifierProfileSettings from "@/components/VerifierProfileSettings";
 
 
 
@@ -20,7 +18,7 @@ const VerifierProfile = () => {
     const router = useRouter();
     const [tab, setTab] = useState('Pending Requests')
 
-
+    console.log(verifierData);
 
     return (
         <div className="section-sm">
@@ -188,14 +186,12 @@ const VerifierProfile = () => {
                                 tab === 'Scan Tickets' ? (
 
                                     <div className={'flex items-center h-full flex-col'}>
-                                            <PendingRequestsCard />
-
+                                            
                                     </div>
 
                                 ) : (
                                     tab === 'Trusted Issuers' ? (
                                         <div className="flex items-center h-full flex-col">
-                                            <VerifiableCredentialsCard />
                                         </div>
 
                                     ) : (
@@ -203,15 +199,15 @@ const VerifierProfile = () => {
                                             tab === 'Profile Settings' ? (
                                                 <div className="flex justify-center items-center flex-wrap">
 
-                                                    <IssuerProfileSettings
-                                                        id={issuerData?.id}
-                                                        did={issuerData?.publicDid}
-                                                        name={issuerData?.name}
-                                                        email={issuerData?.email}
-                                                        govId={issuerData?.govId}
-                                                        type={issuerData?.type}
-                                                        walletId={issuerData?.walletId}
-                                                        setIssuerData = {setIssuerData}
+                                                    <VerifierProfileSettings
+                                                        id={verifierData?.id}
+                                                        did={verifierData?.publicDid}
+                                                        name={verifierData?.name}
+                                                        email={verifierData?.email}
+                                                        govId={verifierData?.govId}
+                                                        walletId={verifierData?.walletId}
+                                                        trustedIssuers= {verifierData?.trustedIssuers}
+                                                        setVerifierData = {setVerifierData}
                                                     />
 
 
@@ -221,7 +217,6 @@ const VerifierProfile = () => {
                                             )
                                         )
 
-                                )
                             }
 
                         </div>
@@ -234,4 +229,4 @@ const VerifierProfile = () => {
     )
 }
 
-export default IssuerProfile;
+export default VerifierProfile;

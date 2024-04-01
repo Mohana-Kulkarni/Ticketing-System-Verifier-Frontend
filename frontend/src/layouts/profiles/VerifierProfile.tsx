@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import IssuerProfileSettings from "@/components/VerifierProfileSettings";
 import VerifierProfileSettings from "@/components/VerifierProfileSettings";
+import TrustedIssuersCard from "@/components/TrustedIssuersCard";
 
 
 
@@ -192,6 +193,7 @@ const VerifierProfile = () => {
                                 ) : (
                                     tab === 'Trusted Issuers' ? (
                                         <div className="flex items-center h-full flex-col">
+                                            <TrustedIssuersCard />
                                         </div>
 
                                     ) : (

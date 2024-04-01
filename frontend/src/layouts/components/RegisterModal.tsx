@@ -38,7 +38,7 @@ const RegisterModal = () => {
 
   const { account, disconnect } = useWallet()
 
-  const registerVerifier = useTx(contract, 'register_verifier');
+  const registerVerifier = useTx(contract, 'registerVerifier');
   useTxNotifications(registerVerifier);
   const { walletAddress, connectLoading, setConnectLoading, setVerifierData, verifierData } = useGlobalContext()
 

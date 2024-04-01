@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { GetVerifierById, GetIssuersByPublicDid } from "@/constants/endpoints/VerifierEndpoints";
 import { useGlobalContext } from "@/app/context/globalContext";
 import TrustedIssuersContent from "./TrustedIssuersContent";
+import AddTrustedIssuersModal from "./AddTrustedIssuersModal";
 
 interface IssuerProps {
   name : string;
@@ -29,13 +30,13 @@ const TrustedIssuersCard = () => {
   //     proofId: "proofId",
   //     docType: "docType",
   // };
-  
+
   useEffect(() => {
       fetchUserDetails();
-  }, []);
+  }, [verifierData?.trustedIssuers]);
 
   const addTrustedIssuer = async() => {
-    
+
   }
 
   const getIssuersDetails = async () => {
@@ -79,7 +80,7 @@ const TrustedIssuersCard = () => {
         }
 
     }
-  
+
   const fetchUserDetails = async () => {
       toast.dismiss()
       toast.loading('Fetching pending requests')
@@ -102,17 +103,29 @@ const TrustedIssuersCard = () => {
 
   return (
       <>
-          {issuers.length > 0 ?
-          issuers.map((issuer) => (
-              <div key={issuer.issuerDid}>
-                  <TrustedIssuersContent issuer={issuer} />
-              </div>
+          <AddTrustedIssuersModal />
 
-          )) :
-            <div className="flex flex-col text-center items-center justify-center h-full"> 
-                <h3>No Rejected Requests!!!</h3>
-                <p className="mt-3">There are no current rejected requests available to show.</p>
-                <button className="" onClick={addTrustedIssuer}>Add New Issuer</button>
+          {issuers.length > 0 ?
+            <div>
+              <button
+                onClick={() => {
+                  const addIssuerModal = document.getElementById("addIssuerModal");
+                  addIssuerModal!.classList.add("show");
+                }}
+                className={`w-full mb-4 btn btn-primary`}
+              >Add New Issuer</button>
+              {issuers.map((issuer) => (
+                  <div key={issuer.issuerDid}>
+                      <TrustedIssuersContent issuer={issuer} />
+                  </div>
+
+              ))}
+            </div>
+          :
+            <div className="flex flex-col text-center items-center justify-center h-full gap-2">
+                <h3>No Trusted Issuers Added Yet!!!</h3>
+                <p>There are no current trusted issuers available to show.</p>
+                <button data-addissuer-trigger className="btn-sm btn-primary">Add New Issuer</button>
             </div>
        }
       </>

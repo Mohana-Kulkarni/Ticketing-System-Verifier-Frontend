@@ -4,7 +4,7 @@ import { BaseURL } from "./BaseURL";
 // GET
 export const GetVerifierById = `${BaseURL}/verifiers/id?id=`;
 export const GetVerifierByWalletId = `${BaseURL}/verifiers/wallet?id=`;
-export const GetQrScanResult =`${BaseURL}/verifiers/result?id=&vcId=&ticketId=&nftId=`;
+export const GetQrScanResult =`${BaseURL}/verifiers/result?`;
 
 
 // POST

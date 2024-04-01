@@ -38,7 +38,7 @@ const RegisterModal = () => {
 
   const { account, disconnect } = useWallet()
 
-  const registerVerifier = useTx(contract, 'registerVerifier');
+  const registerVerifier = useTx(contract, 'register_verifier');
   useTxNotifications(registerVerifier);
   const { walletAddress, connectLoading, setConnectLoading, setVerifierData, verifierData } = useGlobalContext()
 
@@ -217,7 +217,7 @@ const RegisterModal = () => {
               <div className="flex flex-col gap-6">
                 <div className={"grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2  gap-4 w-full"}>
 
-              
+
                   <div className="w-full">
                     <label htmlFor="title" className="form-label block">
                       Full Name
@@ -333,7 +333,7 @@ const RegisterModal = () => {
       </div>:<div className="search-wrapper"><div className="search-wrapper-header"><NotConnected/></div></div>
       }
 
-      
+
     </div>
 
   );

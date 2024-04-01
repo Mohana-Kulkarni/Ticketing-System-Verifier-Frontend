@@ -13,6 +13,7 @@ export const PostLogin = `${BaseURL}/verifiers/login`;
 export const PostTrustedIssuers = `${BaseURL}/verifiers/issuer`;
 
 export const GetIssuersByPublicDid = `${BaseURL}/issuers/trusted`;
+export const GetIssuersByType=`${BaseURL}/issuers/type?type=`
 
 
 // PUT

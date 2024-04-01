@@ -112,7 +112,7 @@ const RegisterModal = () => {
 
   const saveIssuer = async () => {
     try {
-      toast.loading('Registering Issuer..');
+      toast.loading('Registering Verifier..');
 
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
@@ -150,7 +150,7 @@ const RegisterModal = () => {
           trustedIssuers : [],
         }
         setVerifierData(newVerifierData);
-        toast.success("User Registered!")
+        toast.success("Verifier Registered!")
         setFullname("");
         setEmail("");
         setGovId("");
@@ -159,10 +159,10 @@ const RegisterModal = () => {
         registerVerifier.signAndSend([result.statusBody.publicDid]);
         const registerModal = document.getElementById("registerModal");
         registerModal!.classList.remove("show");
-        saveData('IssuerId', result.statusBody.id, 3600);
+        saveData('VerifierId', result.statusBody.id, 3600);
       } else {
         toast.dismiss()
-        toast.error('Failed to register issuer')
+        toast.error('Failed to register verifier')
       }
     } catch (error) {
       console.error("Error:", error);
